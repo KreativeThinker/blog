@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>
+Blogging Setup | Anumeya
+</title>
+
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Introduction to HUGO and a basic setup guide to get started">
+
+<meta name="generator" content="Hugo 0.139.5">
+
+
+<link rel="canonical" href="http://localhost:1313/posts/hugo---blogging-made-easy/" >
+
+
+
+
+<link href="/css/style.min.d23c1980faa61c0d6b331a0cd9dbc34fb7dade9e294067f1108fb8f26bd7796c.css" rel="stylesheet">
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
+  integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<script type="module">
+  import mermaid from "https:\/\/cdn.jsdelivr.net\/npm\/mermaid@latest\/dist\/mermaid.esm.min.mjs";
+  mermaid.initialize({ startOnLoad: true });
+</script>
+
+
+
+</head>
+
+<body>
+
+    <div class="flexWrapper">
+        <header class="headerWrapper">
+    <div class="header">
+        <div>
+            <a class="terminal" href="http://localhost:1313/">
+                <span>reader@blog ~ $</span>
+            </a>
+        </div>
+        <input class="side-menu" type="checkbox" id="side-menu">
+        <label class="hamb" for="side-menu"><span class="hamb-line"></span></label>
+        <nav class="headerLinks">
+            <ul>
+                
+                <li>
+                    <a href="http://localhost:1313/posts" title="" >
+                        ~/posts</a>
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+
+        <div class="content">
+            <main class="main">
+                
+<div class="postWrapper">
+    <h1>Blogging Setup</h1>
+    
+    	<p>Introduction to HUGO and a basic setup guide to get started</p>
+    
+    
+    <section class="postMetadata">
+        <dl>
+            
+                
+<dt>tags</dt>
+<dd><span></span>
+    <a href="/tags/%23hugo/">##HUGO</a><span></span>
+    <a href="/tags/%23guide/">##Guide</a><span></span>
+    <a href="/tags/%23foss/">##FOSS</a></dd>
+            
+            
+            
+            
+                <dt>published</dt>
+                
+                <dd><time datetime="2024-12-16">December 16, 2024</time></dd>
+            
+            
+                <dt>reading time</dt>
+                <dd>2 minutes</dd>
+            
+        </dl>
+    </section>
+    
+    <div>
+        <p><a href="https://gohugo.io">HUGO</a> is one of the most popular Open Source tools for static site generation which is being heavily used for blogs (like this one) and docs. It boasts some extreme speeds with nearly all websites getting rendered in &ldquo;less than a second&rdquo;.  Added to this is a fast-growing community of users and developers and a thriving selection of community themes and many other <a href="https://gohugo.io/about/features">features</a>.</p>
+<p>I am mostly focused on attempting to understand the working and reasons why HUGO is where it is right now but have added a section on how to setup a blog similar to this one using HUGO and Github Pages. For those interested in setting up something similar for yourselves, feel free to skip to <a href="#setup">setup</a></p>
+<h2 id="speed">How So Fast?</h2>
+<p>The language of choice for achieving this is <a href="https://go.dev">Go</a>. For those who know about Go, you can probably skip to the next section. For those who don&rsquo;t, Go (or Golang) is a statically-typed, compiled language developed by Google centered around the concepts of concurrency and simplicity. As a result of the concurrency offered by Go, HUGO can simultaneously render multiple sites very quickly.</p>
+<p>Added to this, HUGO utilizes the Go text/template and html/template packages to produce injection-proof sites. With a custom templating system optimized for, you guessed it, speed, HUGO is able to implement processing and bundling on the fly using their Fast Asset Pipelines.</p>
+<h2 id="working">Working</h2>
+<p>While attempting to look into the inner workings of HUGO, I actually came across this rather interesting <a href="https://discourse.gohugo.io/t/how-does-hugo-work/11037">thread</a> where a user was attempting to recreate the algorithm. Thanks to that discussion, and the documentation, I was able to recreate a simple flow chart for the working.</p>
+<pre class="mermaid">
+    flowchart TD
+	    A[Start: Run &#39;hugo&#39; Command] --&gt; B[Read Configuration File]
+	    B --&gt; C[Scan &#39;content&#39; Directory]
+	    C --&gt; D[Retain Folder Structure for Navigation]
+	    C --&gt; E[Process Markdown Files]
+	    E --&gt; F[Match Files with Templates]
+	    F --&gt;|Single File| G[Use &#39;single.html&#39;]
+	    F --&gt;|Multiple Files| H[Use &#39;list.html&#39;]
+	    F --&gt; I[Search in &#39;layouts&#39; or Active Theme]
+	    G &amp; H --&gt; J[Apply Go Template Engine]
+	    J --&gt; K[Generate &#39;public&#39; Folder]
+	    K --&gt; L[Write Processed HTML and Static Assets]
+	    L --&gt; M[Apply Taxonomies]
+	    M --&gt; N[Output: Fully Generated Static Site]
+	    N --&gt; O[Finish]
+</pre>
+<h2 id="setup">Setup</h2>
+
+    </div>
+</div>
+
+            </main>
+        </div>
+
+
+        <footer class="footer">
+    
+        <span>© Anumeya, Built with <a href="https://gohugo.io" class="footerLink">Hugo</a> and <a href="https://github.com/LordMathis/hugo-theme-nightfall" class="footerLink">Nightfall</a> theme</span>
+    
+</footer>
+    </div>
+
+</body>
+
+</html>

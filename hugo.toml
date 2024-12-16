@@ -1,22 +1,61 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://kreativethinker.github.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'TechBlog'
 
 [module]
-  [[module.imports]]
-    path = "github.com/hugo-sid/hugo-blog-awesome"
+[[module.imports]]
+  path = 'github.com/LordMathis/hugo-theme-nightfall'
 
 [params]
   goToTop = true
-    
-[[params.socialIcons]]
-name = "github"
-url = "https://github.com/KreativeThinker"
+  user = "reader"
+  hostname = "blog"
+  published = true
+  readingTime = true
+  sitedescription = 'Projects, Events and tech buzz'
+  footerHtml = '© Anumeya, Built with <a href="https://gohugo.io" class="footerLink">Hugo</a> and <a href="https://github.com/LordMathis/hugo-theme-nightfall" class="footerLink">Nightfall</a> theme'
 
-[[params.socialIcons]]
-name = "x.com"
-url = "https://x.com/AnumeyaSehgal"
+  [params.author]
+    name = "Anumeya"
+    email = 'anumeyasehgal@proton.me'
 
-[[params.socialIcons]]
-name = "linkedin"
+[[params.social]]
+key = 1
+name = "Github"
+url = "https://github.com/kreativethinker"
+icon = "fa-brands fa-github"
+target = "_blank"
+aria = "GitHub Profile"
+
+[[params.social]]
+key = 2
+name = "LinkedIn"
 url = "https://linkedin.com/in/anumeya-sehgal"
+icon = "fa-brands fa-linkedin"
+target = "_blank" 
+aria = "LinkedIn Profile" 
+
+[[params.social]]
+key = 2
+name = "X.com"
+url = "https://x.com/AnumeyaSehgal"
+icon = "fa-brands fa-x-twitter"
+target = "_blank" 
+aria = "X or Twitter Profile" 
+
+[[params.social]]
+key = 4
+name = "Email"
+url = "mailto:anumeyasehgal@proton.me"
+icon = "fa-solid fa-envelope"
+target = "_blank"
+aria = "Email"
+
+[menu]
+  [[menu.header]]
+    name = "posts"
+    weight = 0
+    url = "/posts"
+
+[[module.imports]]
+path = "github.com/hugomods/mermaid"
