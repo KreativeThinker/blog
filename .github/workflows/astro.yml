@@ -62,7 +62,7 @@ jobs:
             exit 1
           fi
       - name: Setup pnpm
-          if: ${{ steps.detect-package-manager.outputs.manager }} == 'pnpm'
+          if: steps.detect-package-manager.outputs.manager == 'pnpm'
           uses: pnpm/action-setup@v2
           with:
             version: 9
