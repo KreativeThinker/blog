@@ -11,4 +11,4 @@ repos:
     rev: v8.22.1
     hooks:
       - id: gitleaks
-        name: "gitleaks"
+        name: 'gitleaks'
