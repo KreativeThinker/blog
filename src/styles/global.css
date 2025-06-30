@@ -48,6 +48,7 @@ body {
   color: var(--gray-dark);
   font-size: 20px;
   line-height: 1.7;
+  cursor: url("/cursor.svg"), auto;
 }
 main {
   width: 720px;
@@ -87,8 +88,12 @@ b {
 a {
   color: var(--accent);
 }
+button:hover {
+  cursor: url("/cursor_inverted.svg"), auto;
+}
 a:hover {
   color: var(--accent);
+  cursor: url("/cursor_inverted.svg"), auto;
 }
 p {
   margin-bottom: 1em;
