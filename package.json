@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "pnpm build && gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.0",
@@ -23,7 +24,6 @@
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-sort-imports": "^1.8.8",
-    "prettier-plugin-tailwindcss": "^0.6.13",
-    "publish": "pnpm build && gh-pages -d dist -b gh-pages"
+    "prettier-plugin-tailwindcss": "^0.6.13"
   }
 }

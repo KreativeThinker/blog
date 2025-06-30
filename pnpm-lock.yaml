@@ -33,9 +33,6 @@ importers:
       gh-pages:
         specifier: ^6.3.0
         version: 6.3.0
-      github:
-        specifier: ^14.0.0
-        version: 14.0.0
       prettier:
         specifier: ^3.6.2
         version: 3.6.2
@@ -1160,10 +1157,6 @@ packages:
 
   github-slugger@2.0.0:
     resolution: {integrity: sha512-IaOQ9puYtjrkq7Y0Ygl9KDZnrf/aiUJYUpVf89y8kyaxbRG7Y1SrX/jaumrv81vc61+kiMempujsM3Yw7w5qcw==}
-
-  github@14.0.0:
-    resolution: {integrity: sha512-34/VqwhYGeYN0VHBSH49TmRWMF7emy32qjK6POiW47T/QI2u/cpuKsmrWt7a218ew/73dF4dQSJE68/HXdNfPw==}
-    deprecated: '''github'' has been renamed to ''@octokit/rest'' (https://git.io/vNB11)'
 
   glob-parent@5.1.2:
     resolution: {integrity: sha512-AOIgSQCepiJYwP3ARnGx+5VnTu2HBYdzbGP45eLw1vr3zB3vZLeyed1sC9hnbcOc9/SrMyM5RPQrkGz4aS9Zow==}
@@ -3346,8 +3339,6 @@ snapshots:
       globby: 11.1.0
 
   github-slugger@2.0.0: {}
-
-  github@14.0.0: {}
 
   glob-parent@5.1.2:
     dependencies:
