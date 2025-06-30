@@ -18,9 +18,12 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
+    "github": "^14.0.0",
     "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-sort-imports": "^1.8.8",
-    "prettier-plugin-tailwindcss": "^0.6.13"
+    "prettier-plugin-tailwindcss": "^0.6.13",
+    "publish": "pnpm build && gh-pages -d dist -b gh-pages"
   }
 }
