@@ -105,6 +105,14 @@ textarea {
   width: 100%;
   font-size: 16px;
 }
+ul {
+  list-style: disc;
+  margin-left: 1em;
+}
+ol {
+  list-style: decimal;
+  margin-left: 1em;
+}
 input {
   font-size: 16px;
 }
