@@ -1,0 +1,101 @@
+{
+  "cascadeColors": true,
+  "colorBackground": false,
+  "palette": [
+    {
+      "id": "FlKcgYMxKeDyDUcJQQL8O",
+      "name": "orange",
+      "value": "#e08d52"
+    },
+    {
+      "id": "qjXCrIzNSH_KFU04OItIe",
+      "name": "yellow",
+      "value": "#e0c952"
+    },
+    {
+      "id": "bK9PZN7gqXPxyEyVIPO0U",
+      "name": "green",
+      "value": "#52e05e"
+    },
+    {
+      "id": "RnxpPkQTlabguJirwZhXj",
+      "name": "cyan",
+      "value": "#52e099"
+    },
+    {
+      "id": "zh8OTDrcwgbYM8_HY-oAF",
+      "name": "sky",
+      "value": "#52e0d4"
+    },
+    {
+      "id": "mYcTwbj1kxO8E0TazUdsI",
+      "name": "blue",
+      "value": "#5275e0"
+    },
+    {
+      "id": "eUdtLvv-w6djyucSYl3eo",
+      "name": "lila",
+      "value": "#a552e0"
+    },
+    {
+      "id": "kDRMsGhVXelvYzSkrLzT9",
+      "name": "pink",
+      "value": "#e052a5"
+    },
+    {
+      "id": "unH0Ts20rDItq8oQCYfD7",
+      "name": "red",
+      "value": "#e05252"
+    }
+  ],
+  "fileColors": [
+    {
+      "path": "02 - Groups",
+      "color": "FlKcgYMxKeDyDUcJQQL8O"
+    },
+    {
+      "path": "03 - Academics",
+      "color": "qjXCrIzNSH_KFU04OItIe"
+    },
+    {
+      "path": "04 - Journal",
+      "color": "bK9PZN7gqXPxyEyVIPO0U"
+    },
+    {
+      "path": "05 - LUGVITC",
+      "color": "RnxpPkQTlabguJirwZhXj"
+    },
+    {
+      "path": "06 - People",
+      "color": "zh8OTDrcwgbYM8_HY-oAF"
+    },
+    {
+      "path": "07 - Projects",
+      "color": "mYcTwbj1kxO8E0TazUdsI"
+    },
+    {
+      "path": "Tags.md",
+      "color": "kDRMsGhVXelvYzSkrLzT9"
+    },
+    {
+      "path": "Calendar.md",
+      "color": "zh8OTDrcwgbYM8_HY-oAF"
+    },
+    {
+      "path": "08 - Events",
+      "color": "eUdtLvv-w6djyucSYl3eo"
+    },
+    {
+      "path": "01 - Periodic Notes",
+      "color": "unH0Ts20rDItq8oQCYfD7"
+    },
+    {
+      "path": "00 - TODO.md",
+      "color": "unH0Ts20rDItq8oQCYfD7"
+    },
+    {
+      "path": "09 - Work",
+      "color": "kDRMsGhVXelvYzSkrLzT9"
+    }
+  ]
+}

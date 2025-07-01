@@ -1,0 +1,13 @@
+{
+  "cssTheme": "Tokyo Night",
+  "theme": "obsidian",
+  "interfaceFontFamily": "Montserrat",
+  "textFontFamily": "Montserrat",
+  "monospaceFontFamily": "JetBrainsMono Nerd Font,Montserrat",
+  "nativeMenus": false,
+  "enabledCssSnippets": [
+    "Iterative Rainbow Folder Backgrounds",
+    "Coloured Folders"
+  ],
+  "baseFontSize": 16
+}
