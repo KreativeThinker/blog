@@ -154,6 +154,7 @@ DyNaGO is still early-stage. Here's what’s coming:
 - **UI Configuration Tool**: Build a GUI to let users bind gestures to scripts or actions without editing config files.
 - **Standalone Installer**: Release an installable version via pip or script with bundled models and sane defaults.
 - **Voice Control Integration**: Integrate local voice-based commands through an MCP interface, powered by a local LLM.
+- **Better Dataset:** I plan to switch to the [HaGRID](https://github.com/hukenovs/hagrid) dataset for better training for the static gesture recognition layer. That will add versatility to the gestures allowing for more elaborate use cases and bindings.
 
 ## Conclusion
 
