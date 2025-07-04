@@ -183,7 +183,9 @@ This update significantly improved overall system performance by eliminating a h
 More information can be found on the project GitHub. Performance data has been compiled and uploaded. It can be accessed by clicking [here](https://github.com/KreativeThinker/Dynago/blob/main/Experiment_Analysis.md).
 
 ## Demo Video (with voice-over)
-![demo video](../../assets/dynago/demo.mp4)
+<video controls>
+  <source src="/videos/dynago-demo.mp4" type="video/mp4">
+</video>
 ## Concepts and Resources
 
 This project required me to learn about dataset creation, normalization techniques, computer vision, various ML modeling techniques, and evaluation strategies. Before I started working on this project, I went through some existing literature on the topic as well. Links for the papers are attached below. For learning more about some of the concepts, I referred to other material, which is also linked.
