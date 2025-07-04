@@ -186,6 +186,7 @@ More information can be found on the project GitHub. Performance data has been c
 <video controls>
   <source src="/videos/dynago-demo.mp4" type="video/mp4">
 </video>
+
 ## Concepts and Resources
 
 This project required me to learn about dataset creation, normalization techniques, computer vision, various ML modeling techniques, and evaluation strategies. Before I started working on this project, I went through some existing literature on the topic as well. Links for the papers are attached below. For learning more about some of the concepts, I referred to other material, which is also linked.
