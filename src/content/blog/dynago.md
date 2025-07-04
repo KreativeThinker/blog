@@ -32,9 +32,10 @@ Enter the AI project from my previous semester, [DyNaGO](https://github.com/Krea
 
 ## How it works
 
-I adopted a two-stage model for this. The first stage classifies the static gesture using a Support Vector Machine (SVM) trained on 5 static gestures: point, two fingers (for scrolling), three fingers (volume and brightness), open palm (workspaces and page up/page down), and closed fist (no gesture). These are mapped internally to functions as below:
+I adopted a two-stage model for this. The first stage classifies the static gesture using a Support Vector Machine (SVM) trained on 5 static gestures: point, two fingers (for scrolling), three fingers (volume and brightness), open palm (workspaces and page up/page down), and closed fist (no gesture). These are mapped internally to functions as below in a config file:
 
 ```py
+# Configuration file snippet
 map = {
 	"1": {
 	    "name": "open palm",
@@ -64,8 +65,85 @@ This maps to the `function` set in the `map` and executes the custom function.
 
 I also used Poetry for package and runtime management, and linters and formatters (as always) for ensuring cleaner code.
 
-### Performance & Dataset
+## Architecture
 
+The project uses a hybrid 2-tier architecture aimed at  making the interface accessible even for lighter hardware like raspberry pis, old laptops, etc. The current implementation utilizes an SVM for static gesture classification and a custom velocity vector analysis algorithm which I will explain shortly.
+![architecture](../../assets/dynago/architecture.png)
+
+#### Tier I: Static Gesture Classification
+
+The first stage, as mentioned earlier,  performs a low frame rate capture analysis to look for a recognized hand gesture. The first step to any image analysis is normalization. Without normalization, the possible combinations of visual inputs would be immense. 
+
+```py
+def normalize_landmarks(landmarks):
+    num_landmarks = 21
+    landmarks = np.array(landmarks).reshape(num_landmarks, 3)
+    wrist = landmarks[0]
+    landmarks -= wrist
+    max_dist = np.max(np.linalg.norm(landmarks, axis=1))
+    landmarks /= max_dist if max_dist > 0 else 1
+    return landmarks.flatten()
+```
+
+Here, I am converting the landmarks into vectors of (x, y, z) and normalizing based on the wrist landmark. This allows for a positional and size based normalization reducing the possible input space to a smaller, usable size.
+
+```py
+# Using the model I trained
+gesture = predict_gesture(norm_landmarks, model)
+
+if gesture == 4 and ENABLE_MOUSE:
+	# Here I am handling cursor events. 
+	# Currently implemented a simple pointer position control.
+elif not state["tracking_motion"]:
+	# When not tracking motion, check for new gestures every N frames
+	# Skipping frames to lower analysis overhead
+	if state["frame_count"] % N_FRAMES == 0:
+		if gesture == 0:  # No gesture detected
+			state["current_gesture_id"] = None
+		else:
+			# New gesture detected
+			# Move control to Tier II
+			# Here I append details of the gesture
+			# Including raw position values to a dequeue
+```
+
+#### Tier II: Temporal Velocity Vector Analysis
+
+This stage uses deques as follows to store values provided by the earlier capture to run parallel to the frame capture and classification process as so
+```py
+mean_landmark_history = deque(maxlen=10)
+landmark_history = deque(maxlen=10)
+```
+
+Here, the `mean_landmark_history` is the axis used for tracking the gesture direction. Here is a simplified implementation of the velocity vector analysis:
+
+```py
+    start, end = mean_landmark_history[0], mean_landmark_history[-1]
+    dx, dy = end[0] - start[0], end[1] - start[1]
+    magnitude = math.sqrt(dx**2 + dy**2)
+
+    if magnitude < VEL_THRESHOLD:
+        return None
+
+    angle = math.degrees(math.atan2(dy, dx))
+    direction = None
+
+    if 150 <= angle <= 180 or -180 <= angle <= -150:
+        direction = 0  # Left
+    elif -30 <= angle <= 30:
+        direction = 1  # Right
+    elif 60 < angle < 120:
+        direction = 2  # Down
+    elif -120 < angle < -60:
+        direction = 3  # Up
+```
+
+Simpler than the terminology isn't it? (Happens quite often nowadays). For using more complex gestures however, this setup doesn't work. For instance, rotations will also get classified as swipes. This is a limitation of this implementation. Thus, it requires a more real-time check of individual changes. That code however, is very lengthy and slightly more complex as compared to this one which is ideal for understanding the functionality. (In other words, I am stealing the phrase from my math book: "However, this concept is beyond the scope of this chapter" 😅)
+
+#### Why not DNNs to start with?
+
+Mediapipe offers a methodology for training it on the classification of new gestures. However, that requires a very very large dataset which is not present for this current usecase. While the [HaGRID](https://github.com/hukenovs/hagrid) exists for static hand shapes, it doesn't cover the required shapes present in the complete swiping motion. The same dataset has been used for training static (and awkward) hand gesture based HCI which are not the intention for this project. An SVM is significantly accurate, fast and cheaper to train and run on low end systems making it an ideal choice for the project.
+### Performance & Dataset
 #### Dataset
 
 The full dataset consists of ~1700 labeled gesture instances, with 1022 used in the final evaluation after preprocessing and filtering. The gesture classes are:
@@ -104,6 +182,8 @@ This update significantly improved overall system performance by eliminating a h
 
 More information can be found on the project GitHub. Performance data has been compiled and uploaded. It can be accessed by clicking [here](https://github.com/KreativeThinker/Dynago/blob/main/Experiment_Analysis.md).
 
+## Demo Video (with voice-over)
+![demo video](../../assets/dynago/demo.mp4)
 ## Concepts and Resources
 
 This project required me to learn about dataset creation, normalization techniques, computer vision, various ML modeling techniques, and evaluation strategies. Before I started working on this project, I went through some existing literature on the topic as well. Links for the papers are attached below. For learning more about some of the concepts, I referred to other material, which is also linked.
