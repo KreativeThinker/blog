@@ -1,5 +1,5 @@
 ---
-title: 'Making an Ironman-like Gesture Computer Interface'
+title: 'Making Ironman’s Gesture Control System'
 description: 'What I am making, the working, the design choices, the concepts, my journey and what I have planned for this Human Computer Interface'
 pubDate: 'Jul 01 2025'
 heroImage: '../../assets/dynago/logo.png'
@@ -253,4 +253,3 @@ Building DyNaGO wasn’t just about mimicking Ironman. It was basically me being
 This project helped me dive deep into classical ML, real-time inference, dataset design, and human-centered interface design. It’s far from finished, but it’s a meaningful step toward more intuitive computing.
 
 If this idea interests you, contributions and feedback are always welcome on [GitHub](https://github.com/KreativeThinker/dynago).
-
