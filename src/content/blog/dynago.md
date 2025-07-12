@@ -3,8 +3,11 @@ title: 'Making an Ironman-like Gesture Computer Interface'
 description: 'What I am making, the working, the design choices, the concepts, my journey and what I have planned for this Human Computer Interface'
 pubDate: 'Jul 01 2025'
 heroImage: '../../assets/dynago/logo.png'
+image: '../../assets/dynago/og_image.png'
 ---
+
 ### Contents
+
 - [What I am Making](#what-i-am-making)
 - [How it works](#how-it-works)
   - [Tech Stack:](#tech-stack)
@@ -48,7 +51,7 @@ map = {
 		] # placeholder functions
 	},
 }
-````
+```
 
 Here, landmarks mentioned in the mapping are the landmarks we are interested in tracking. This reduces the overall SVM complexity making it a much faster and lighter model.
 
@@ -67,12 +70,12 @@ I also used Poetry for package and runtime management, and linters and formatter
 
 ## Architecture
 
-The project uses a hybrid 2-tier architecture aimed at  making the interface accessible even for lighter hardware like raspberry pis, old laptops, etc. The current implementation utilizes an SVM for static gesture classification and a custom velocity vector analysis algorithm which I will explain shortly.
+The project uses a hybrid 2-tier architecture aimed at making the interface accessible even for lighter hardware like raspberry pis, old laptops, etc. The current implementation utilizes an SVM for static gesture classification and a custom velocity vector analysis algorithm which I will explain shortly.
 ![architecture](../../assets/dynago/architecture.png)
 
 #### Tier I: Static Gesture Classification
 
-The first stage, as mentioned earlier,  performs a low frame rate capture analysis to look for a recognized hand gesture. The first step to any image analysis is normalization. Without normalization, the possible combinations of visual inputs would be immense. 
+The first stage, as mentioned earlier, performs a low frame rate capture analysis to look for a recognized hand gesture. The first step to any image analysis is normalization. Without normalization, the possible combinations of visual inputs would be immense.
 
 ```py
 def normalize_landmarks(landmarks):
@@ -92,7 +95,7 @@ Here, I am converting the landmarks into vectors of (x, y, z) and normalizing ba
 gesture = predict_gesture(norm_landmarks, model)
 
 if gesture == 4 and ENABLE_MOUSE:
-	# Here I am handling cursor events. 
+	# Here I am handling cursor events.
 	# Currently implemented a simple pointer position control.
 elif not state["tracking_motion"]:
 	# When not tracking motion, check for new gestures every N frames
@@ -110,6 +113,7 @@ elif not state["tracking_motion"]:
 #### Tier II: Temporal Velocity Vector Analysis
 
 This stage uses deques as follows to store values provided by the earlier capture to run parallel to the frame capture and classification process as so
+
 ```py
 mean_landmark_history = deque(maxlen=10)
 landmark_history = deque(maxlen=10)
@@ -143,18 +147,20 @@ Simpler than the terminology isn't it? (Happens quite often nowadays). For using
 #### Why not DNNs to start with?
 
 Mediapipe offers a methodology for training it on the classification of new gestures. However, that requires a very very large dataset which is not present for this current usecase. While the [HaGRID](https://github.com/hukenovs/hagrid) exists for static hand shapes, it doesn't cover the required shapes present in the complete swiping motion. The same dataset has been used for training static (and awkward) hand gesture based HCI which are not the intention for this project. An SVM is significantly accurate, fast and cheaper to train and run on low end systems making it an ideal choice for the project.
+
 ### Performance & Dataset
+
 #### Dataset
 
 The full dataset consists of ~1700 labeled gesture instances, with 1022 used in the final evaluation after preprocessing and filtering. The gesture classes are:
 
 ```json
 {
-	0: 'fist',
-	1: 'open palm',
-	2: 'two fingers',
-	3: 'three fingers',
-	4: 'point'
+  "0": "fist",
+  "1": "open palm",
+  "2": "two fingers",
+  "3": "three fingers",
+  "4": "point"
 }
 ```
 
@@ -183,6 +189,7 @@ This update significantly improved overall system performance by eliminating a h
 More information can be found on the project GitHub. Performance data has been compiled and uploaded. It can be accessed by clicking [here](https://github.com/KreativeThinker/Dynago/blob/main/Experiment_Analysis.md).
 
 ## Demo Video (with voice-over)
+
 <video controls>
   <source src="/videos/dynago-demo.mp4" type="video/mp4">
 </video>
@@ -246,3 +253,4 @@ Building DyNaGO wasn’t just about mimicking Ironman. It was basically me being
 This project helped me dive deep into classical ML, real-time inference, dataset design, and human-centered interface design. It’s far from finished, but it’s a meaningful step toward more intuitive computing.
 
 If this idea interests you, contributions and feedback are always welcome on [GitHub](https://github.com/KreativeThinker/dynago).
+
